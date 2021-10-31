@@ -2,6 +2,7 @@
 
 # use the rink plot necessary above this code to get shot locations
 
+# plot shots
 halfrink + geom_point(data = locations, aes(x=x.plot, y=y.plot)) +
   labs(title = "Arthur Kaliyev") +
   labs(subtitle = "goals verified by video") +
@@ -9,3 +10,15 @@ halfrink + geom_point(data = locations, aes(x=x.plot, y=y.plot)) +
   annotate("text", x = Inf, y = -Inf, label = "@turkjr19",
          hjust=1.35, vjust=-0.2, col="black", cex=4,
          fontface = "bold", alpha = .5)
+
+
+# heatmap of shots
+rink + stat_density2d(data = locations, aes(x=x.plot, y=y.plot, fill = ..level.., alpha = ..level..),
+                      size = .01, bins = 16, geom = "polygon") +
+  scale_fill_gradient(low = "black", high = "springgreen") +
+  scale_alpha(range = c(0.1, 0.8), guide = FALSE) +
+  labs(subtitle = "       OHL Playoff Goals Heatmap") +
+  annotate("text", x = Inf, y = -Inf, label = "@turkjr19",
+           hjust=3.0, vjust=-1.6, col="blue", cex=4,
+           fontface = "bold", alpha = 0.5) +
+  theme(legend.position = 'none')
