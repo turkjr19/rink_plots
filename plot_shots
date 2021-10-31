@@ -1,0 +1,11 @@
+# plot all goal locations
+
+# use the rink plot necessary above this code to get shot locations
+
+halfrink + geom_point(data = locations, aes(x=x.plot, y=y.plot)) +
+  labs(title = "Arthur Kaliyev") +
+  labs(subtitle = "goals verified by video") +
+  labs(caption = "") +
+  annotate("text", x = Inf, y = -Inf, label = "@turkjr19",
+         hjust=1.35, vjust=-0.2, col="black", cex=4,
+         fontface = "bold", alpha = .5)
